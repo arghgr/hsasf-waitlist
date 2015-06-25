@@ -1,0 +1,29 @@
+<h1>HSA SF Waitlist Notifier</h1>
+
+<p>
+  Please enter your birthday:
+</p>
+
+<p>
+
+  <%= form_tag("/searches", method: "POST") do %>
+    <%= label_tag(:q, "Enter birthday:") %>
+    <%= date_field_tag(:birthdate) %>
+    <%= submit_tag("Submit") %>
+  <% end %>
+
+</p>
+
+<h3>Waitlist</h3>
+<ol>
+  <% @waitlist_array.each do |entry| %>
+    <li>
+      <% entry.each do |key, value| %>
+        <%= key %>: <%= value %> <br />
+      <% end %>
+    </li>
+  <% end %>
+</ol>
+
+<p>
+</p>

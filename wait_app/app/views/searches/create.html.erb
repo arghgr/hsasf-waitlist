@@ -1,0 +1,26 @@
+<p>
+  user bday:
+  <%= @user_bday %>
+  <br>
+  matches:
+  <% if @matches %>
+    <%= @matches.length %>
+    <ol>
+      <% @matches.each do |match| %>
+        <li>
+          you are number <%= match["position_number"] %> in the waitlist
+          <br></br>
+          <% match.each do |key, value| %>
+            <%= key %>: <%= value %> <br />
+          <% end %>
+        </li>
+      <% end %>
+    </ol>
+  <% else %>
+    no matches
+  <% end %>
+</p>
+
+<p>
+  <%= link_to "New search", searches_path, class: "btn btn-md btn-info" %>
+</p>
