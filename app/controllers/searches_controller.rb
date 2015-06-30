@@ -1,6 +1,5 @@
 class SearchesController < ApplicationController
   def index
-    @waitlist_array = get_waitlist
   end
 
   def create
