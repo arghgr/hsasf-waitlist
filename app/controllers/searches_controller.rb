@@ -12,6 +12,10 @@ class SearchesController < ApplicationController
   def show
   end
 
+  def all
+    @waitlist_array = get_waitlist
+  end
+
   private
 
   def get_waitlist

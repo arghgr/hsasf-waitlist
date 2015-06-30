@@ -22,13 +22,6 @@
   <% end %>
 </p>
 
-<h3>Waitlist</h3>
-<ol>
-  <% @waitlist_array.each do |entry| %>
-    <li>
-      <% entry.each do |key, value| %>
-        <%= key %>: <%= value %> <br />
-      <% end %>
-    </li>
-  <% end %>
-</ol>
+<p>
+  <%= link_to "See full waitlist", all_searches_path %>
+</p>

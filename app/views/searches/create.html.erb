@@ -5,19 +5,29 @@
   Matches:
   <% if @matches %>
     <%= @matches.length %>
-    <ol>
-      <% @matches.each do |match| %>
-        <li>
-          <% if match["position_number"] %>
-            You are number <%= match["position_number"] %> in the waitlist
-            <br>
-          <% end %>
-          <% match.each do |key, value| %>
-            <%= key %>: <%= value %> <br />
-          <% end %>
-        </li>
+    <% if @matches.length > 1 %>
+      <br>Which is your case ID?
+      <ol>
+        <% @matches.each do |match| %>
+          <li>
+            <%= match["caseid"] %>
+          </li>
+          <!-- <li>
+            <% if match["position_number"] %>
+              You are number <%= match["position_number"] %> in the waitlist
+              <br>
+            <% end %>
+            <% match.each do |key, value| %>
+              <%= key %>: <%= value %> <br />
+            <% end %>
+          </li> -->
+        <% end %>
+      </ol>
+    <% elsif @matches.length > 0  %>
+      <% if @matches.first["position_number"] %>
+        <br>You are number <%= @matches.first["position_number"] %> in the waitlist
       <% end %>
-    </ol>
+    <% end %>
   <% end %>
 </p>
 
