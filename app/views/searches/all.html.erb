@@ -1,0 +1,13 @@
+<h3>Waitlist</h3>
+<p>
+  <%= link_to 'Back to search', searches_path %>
+</p>
+<ol>
+  <% @waitlist_array.each do |entry| %>
+    <li>
+      <% entry.each do |key, value| %>
+        <%= key %>: <%= value %> <br />
+      <% end %>
+    </li>
+  <% end %>
+</ol>

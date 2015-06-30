@@ -8,9 +8,15 @@
 </head>
 <body>
 
+<%= render 'layouts/nav'%>
+
 <div class="container-fluid">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <% if notice %>
+    <div class="alert alert-info" role="alert"><%= notice %></div>
+  <% end %>
+  <% if alert %>
+    <div class="alert alert-warning" role="alert"><%= alert %></div>
+  <% end %>
   <%= yield %>
 </div>
 
