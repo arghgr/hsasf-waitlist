@@ -11,6 +11,9 @@
         <% @matches.each do |match| %>
           <li>
             <%= match["caseid"] %>
+            <% if match["position_number"] %>
+              <br>You are number <%= match["position_number"] %> in the waitlist
+            <% end %>
           </li>
           <!-- <li>
             <% if match["position_number"] %>
