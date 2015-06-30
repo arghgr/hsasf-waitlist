@@ -5,13 +5,11 @@
 </p>
 
 <p>
-
   <%= form_tag("/searches", method: "POST") do %>
     <%= label_tag(:q, "Enter birthday:") %>
     <%= date_field_tag(:birthdate) %>
     <%= submit_tag("Submit") %>
   <% end %>
-
 </p>
 
 <h3>Waitlist</h3>

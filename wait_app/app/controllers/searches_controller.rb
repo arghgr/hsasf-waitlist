@@ -5,8 +5,8 @@ class SearchesController < ApplicationController
 
   def create
     @waitlist_array = get_waitlist
-    @user_bday = parse_bday(params[:birthdate])
-    @matches = get_waitlist_number(@waitlist_array, @user_bday)
+    @bday = parse_bday(params[:birthdate])
+    @matches = get_waitlist_number(@waitlist_array, @bday)
   end
 
   def show
