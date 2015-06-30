@@ -1,6 +1,16 @@
 <h1>HSA SF Waitlist Notifier</h1>
 
 <p>
+  <% if user_signed_in? %>
+    hello, <%= current_user.name %>!
+    <br><%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign In", new_user_session_path %>
+    <br><%= link_to "Sign Up", new_user_registration_path %>
+  <%end %>
+</p>
+
+<p>
   Please enter your birthday:
 </p>
 
@@ -22,6 +32,3 @@
     </li>
   <% end %>
 </ol>
-
-<p>
-</p>
