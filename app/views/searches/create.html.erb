@@ -28,7 +28,10 @@
       </ol>
     <% elsif @matches.length > 0  %>
       <% if @matches.first["position_number"] %>
-        <br>You are number <%= @matches.first["position_number"] %> in the waitlist
+        <br>You are number <%= @matches.first["position_number"] %> in the waitlist.
+        <% if @matches.first["message"] %>
+          <br><%= @matches.first["message"] %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

@@ -1,2 +1,23 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<% if user_signed_in? %>
+  <% if current_user.id == @user.id %>
+
+    <%= render 'crumbs' %>
+    
+    <h2>Edit <%= @user.name %>'s Settings</h2>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <%= simple_form_for @user do |f| %>
+        <%= f.input :name %>
+        <%= f.input :birthdate, as: :date, start_year: Date.today.year - 100,
+                              end_year: Date.today.year,
+                              order: [:month, :day, :year] %>
+        <%= f.input :phone %>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
+
+  <% else %>
+    You are not this user.
+  <% end %>
+<% else %>
+  You are not logged in.
+<%end %>
