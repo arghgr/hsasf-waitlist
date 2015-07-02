@@ -1,17 +1,19 @@
 <h1>HSA SF Waitlist Notifier</h1>
 
 <p>
-  Please enter your birthday:
-</p>
-
-<p>
   <%= form_tag("/searches", method: "POST") do %>
     <%= label_tag(:q, "Enter birthday:") %>
     <%= date_field_tag(:birthdate) %>
-    <%= submit_tag("Submit") %>
+    <%= submit_tag("Submit", class: "btn btn-sm btn-info") %>
   <% end %>
 </p>
 
 <p>
-  <%= link_to "See full waitlist", all_searches_path %>
+  <% if current_user.birthdate %>
+    <%= link_to "Use my birthday", searches_path(birthdate: current_user.birthdate.to_s), method: :post, class: "btn btn-sm btn-success" %>
+  <% end %>
+</p>
+
+<p>
+  <%= link_to "See full waitlist", all_searches_path, class: "btn btn-sm btn-default" %>
 </p>

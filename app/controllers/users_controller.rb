@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user), notice: 'User settings updated.'
     else
-      render 'edit', notice: 'There were one or more errors with your update. Please change them and try again.'
+      render 'edit'
     end
   end
 
