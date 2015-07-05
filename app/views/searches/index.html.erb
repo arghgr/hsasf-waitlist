@@ -9,8 +9,10 @@
 </p>
 
 <p>
-  <% if current_user.birthdate %>
-    <%= link_to "Use my birthday", searches_path(:birthdate => "#{current_user.birthdate.to_s}"), method: :post, class: "btn btn-sm btn-success" %>
+  <% if current_user %>
+    <% if current_user.birthdate %>
+      <%= link_to "Use my birthday", searches_path(birthdate: "#{current_user.birthdate.to_s}"), method: :post, class: "btn btn-sm btn-success" %>
+    <% end %>
   <% end %>
 </p>
 
