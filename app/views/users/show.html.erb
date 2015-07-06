@@ -2,14 +2,25 @@
   <% if current_user.id == @user.id %>
 
     <%= render 'crumbs' %>
-    
+
     <h2><%= @user.name %></h2>
-    <br><%= @user.birthdate %>
-    <br><%= @user.phone %>
+    <br>Caseid: <%= @user.caseid %>
+    <br>Phone: <%= @user.phone %>
+    <br>Email: <%= @user.email %>
+
+    <% if @match %>
+      <h4>
+        Birthday: <%= @match['dob'] %>
+        <br>Waitlist number: <%= @match['position_number'] %>
+        <% if @match['message'] %>
+          <br>Message: <%= @match['message'] %>
+        <% end %>
+      </h4>
+    <% end %>
 
   <% else %>
     You are not this user.
   <% end %>
 <% else %>
   You are not logged in.
-<%end %>
+<% end %>

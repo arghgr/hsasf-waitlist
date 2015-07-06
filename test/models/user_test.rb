@@ -4,7 +4,6 @@
 #
 #  id                     :integer          not null, primary key
 #  name                   :string
-#  birthdate              :date
 #  phone                  :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -18,6 +17,7 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
+#  caseid                 :integer
 #
 
 require 'test_helper'

@@ -1,29 +1,31 @@
 <p>
-  Birthday:
-  <%= @bday %>
+  <% if @bday %>
+    Birthday:
+    <%= @bday %>
+  <% end %>
+  <% if @caseid %>
+    Case ID:
+    <%= @caseid %>
+  <% end %>
   <br>
   Matches:
   <% if @matches %>
     <%= @matches.length %>
     <% if @matches.length > 1 %>
-      <br>Which is your case ID?
       <ol>
         <% @matches.each do |match| %>
           <li>
             <%= match["caseid"] %>
             <% if match["position_number"] %>
               <br>You are number <%= match["position_number"] %> in the waitlist
+              <% if match["message"] %>
+                <br><%= match["message"] %>
+              <% end %>
+              <% if not current_user %>
+                <br><%= link_to "Sign up", new_user_registration_path(caseid: "#{match['caseid']}"), class: "btn btn-sm btn-success" %> to be notified when your waitlist position is under the threshold.
+              <% end %>
             <% end %>
           </li>
-          <!-- <li>
-            <% if match["position_number"] %>
-              You are number <%= match["position_number"] %> in the waitlist
-              <br>
-            <% end %>
-            <% match.each do |key, value| %>
-              <%= key %>: <%= value %> <br />
-            <% end %>
-          </li> -->
         <% end %>
       </ol>
     <% elsif @matches.length > 0  %>
@@ -31,6 +33,9 @@
         <br>You are number <%= @matches.first["position_number"] %> in the waitlist.
         <% if @matches.first["message"] %>
           <br><%= @matches.first["message"] %>
+        <% end %>
+        <% if not current_user %>
+          <br><%= link_to "Sign up", new_user_registration_path(caseid: "#{match['caseid']}"), class: "btn btn-sm btn-primary" %> to be notified when your waitlist position is under the threshold.
         <% end %>
       <% end %>
     <% end %>

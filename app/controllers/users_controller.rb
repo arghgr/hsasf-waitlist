@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-  def index
-  end
 
-  def new
-  end
-
-  def create
+  def show
+    @user = get_user
+    if @user.caseid
+      @caseid = @user.caseid.to_s
+      @match = get_caseid_matches(@caseid).first
+    end
   end
 
   def edit
@@ -21,20 +21,17 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = get_user
-  end
-
   def destroy
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :birthdate, :phone)
+    params.require(:user).permit(:name, :birthdate, :phone, :caseid)
   end
 
   def get_user
     User.find(params[:id])
   end
+
 end
