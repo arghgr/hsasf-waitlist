@@ -38,6 +38,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'rest-client'
 gem 'json'
+gem 'figaro'
 
 # Heroku-related gems
 gem 'rails_12factor', group: :production
