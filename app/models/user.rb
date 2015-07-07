@@ -27,11 +27,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
 def self.current_wait_list
   waitlist_data = RestClient.get('https://data.sfgov.org/resource/w4sk-nq57.json')
-    waitlist_array = JSON.parse(waitlist_data.body)
-    return waitlist_array
+  waitlist_array = JSON.parse(waitlist_data.body)
+  return waitlist_array
 end
 
 def self.email_top_100
