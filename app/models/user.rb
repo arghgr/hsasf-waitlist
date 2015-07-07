@@ -40,9 +40,7 @@ def self.email_top_100
     if entry["position_number"].to_i <= 100
       unless User.where(caseid: entry["caseid"]).first.nil?
         user = User.where(caseid: entry["caseid"]).first
-        if user["caseid"].nil?
-          puts "IT'S NIL"
-        else
+        unless user["caseid"].nil?
           UserMailer.waitlist_alert(user, entry).deliver_now
         end
       end
