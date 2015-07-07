@@ -26,4 +26,29 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
+def self.current_wait_list
+  waitlist_data = RestClient.get('https://data.sfgov.org/resource/w4sk-nq57.json')
+    waitlist_array = JSON.parse(waitlist_data.body)
+    return waitlist_array
+end
+
+def self.email_top_100
+  waitlist = current_wait_list
+  waitlist.map do |entry|
+    if entry["position_number"].to_i <= 100
+      unless User.where(caseid: entry["caseid"]).first.nil?
+        user = User.where(caseid: entry["caseid"]).first
+        if user["caseid"].nil?
+          puts "IT'S NIL"
+        else
+          UserMailer.waitlist_alert(user, entry).deliver_now
+        end
+      end
+    end
+  end
+end
+
+
 end

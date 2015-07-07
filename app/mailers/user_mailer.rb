@@ -6,12 +6,14 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.waitlist_alert.subject
   #
-  def waitlist_alert(user)
+  def waitlist_alert(user, entry)
     @user = user
     @email = @user.email
-    @greeting = "Hi"
+    @position = entry["position_number"]
 
-    mail to: @user.email, subject: "Waitlist number"
+    unless @position.nil?
+      mail to: @user.email, subject: "You are number #{@position} on the HSA-SF waitlist"
+    end
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
