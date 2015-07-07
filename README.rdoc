@@ -1,3 +1,5 @@
 == hsasf-waitlist
 
 * The application is named wait_app.
+* The mailer uses the Figaro gem to handle environment variables, so 1) run Bundler, then 2) set GMAIL_USERNAME and GMAIL_PASSWORD in application.yml before running the rails server.
+* 7/6/2015: Currently, you can send emails to users in the top 100 of the waitlist through the rails console using User.email_top_100. It will eventually be a job that will run once a day after the daily fetching of the waitlist JSON.
