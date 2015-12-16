@@ -35,7 +35,7 @@
           <br><%= @matches.first["message"] %>
         <% end %>
         <% if not current_user %>
-          <br><%= link_to "Sign up", new_user_registration_path(caseid: "#{match['caseid']}"), class: "btn btn-sm btn-primary" %> to be notified when your waitlist position is under the threshold.
+          <br><%= link_to "Sign up", new_user_registration_path(caseid: "#{@matches.first["caseid"]}"), class: "btn btn-sm btn-primary" %> to be notified when your waitlist position is under the threshold.
         <% end %>
       <% end %>
     <% end %>
